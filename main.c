@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <openssl/bn.h>
 #include <pthread.h>
 
@@ -49,6 +50,48 @@ matrix * matrix_alloc(int i, BIGNUM ** numbers){
 	return m;
 }
 
+void matrix_mul(matrix * m,matrix * n){
+	/*
+	 0 1 00 01
+	 2 3 10 11
+	 */
+	BIGNUM * m0n0=BN_new();
+	BIGNUM * m1n1=BN_new();
+	
+	BIGNUM * m2n1=BN_new();
+	BIGNUM * m3n3=BN_new();
+	
+	BN_CTX * ctx=BN_CTX_new();
+	
+	BN_mul(m0n0, m->f00, n->f00, ctx);
+	BN_mul(m1n1, m->f01, n->f01, ctx);
+	BN_mul(m2n1, m->f10, n->f01, ctx);
+	BN_mul(m3n3, m->f11, n->f11, ctx);
+	
+	/*
+	 m00*n00+m01*n01   m00*n01+m01*n11	 
+	 m01*n00+m11*n01   m10*n01+m11*n11
+	 */
+	
+	if (! m->fextern[m->level+n->level+1]) {
+		m->fextern[m->level+n->level+1]=BN_new();
+		BN_add(m->fextern[m->level+n->level+1], m0n0, m1n1);
+		//printf("set number %d with %s\n",m->level+n->level+1,BN_bn2dec(m->fextern[m->level+n->level+1]));
+	}
+	
+	if (! m->fextern[m->level+n->level-1]) {
+		m->fextern[m->level+n->level-1]=BN_new();
+		BN_add(m->fextern[m->level+n->level-1], m2n1, m3n3);
+		//printf("set number %d with %s\n",m->level+n->level-1,BN_bn2dec(m->fextern[m->level+n->level-1]));
+	}
+	
+	if (! m->fextern[m->level+n->level]) {
+		m->fextern[m->level+n->level]=BN_new();
+		BN_sub(m->fextern[m->level+n->level],m->fextern[m->level+n->level+1] ,m->fextern[m->level+n->level-1] );
+		//printf("set number %d with %s\n",m->level+n->level,BN_bn2dec(m->fextern[m->level+n->level]));
+	}
+}
+
 void print_matrix(matrix * m){
 	//printf("level %d\n",m->level);
 	printf("number %d-%d\n",m->level-1,m->level+1);
@@ -65,10 +108,10 @@ void * runner(void *arg){
 	
 	while (m->level+m->other->level < m->goal) {
 		// m=m*m, update members, m->level
-		if (m->id==0) {
+		/*if (m->id==0) {
 			printf("thread %d,level %d\n",m->id,m->level);
 			print_matrix(m);
-		}
+		}*/
 		BIGNUM * tmp_n1_n1=BN_new();
 		BIGNUM * tmp_n1_n=BN_new();
 		BIGNUM * tmp_n_n0=BN_new();
@@ -127,6 +170,8 @@ int main (int argc, const char * argv[]) {
 	printf("generate %dth fib number\n",num);
 	
 	BIGNUM ** numbers=malloc(sizeof(BIGNUM *)*num*2);
+	int * matrix_list=malloc(sizeof(int)*num/2);
+	int matrix_count=0;
 	
 	
 	BN_dec2bn(&numbers[0],"0");
@@ -166,11 +211,41 @@ int main (int argc, const char * argv[]) {
 	for (int i=0; i<num*2; i++) {
 		if (numbers[i]) {
 			printf("%d %s\n",i,BN_bn2dec(numbers[i]));
+			if(i>1 && numbers[i-1] && numbers[i+1]){
+				matrix_list[matrix_count]=i;
+				matrix_count++;
+			}
 		}else {
-			printf("%d\n",i);
+			//printf("%d\n",i);
 		}
 
 	}
+	printf("we have %d matrix\n",matrix_count);
+	for (int i=0; i<matrix_count; i++) {
+		printf("matrix %d\n",matrix_list[i]);
+	}
+	
+	printf("solving subset sum=%d problem\n",num);
+	int * subset=malloc(sizeof(int)*10);
+	int subset_count=0;
+	int tmpsum=num;
+	for (int i=matrix_count-1; i>=0 && tmpsum>0; i--) {
+		if (matrix_list[i]<=tmpsum) {
+			tmpsum-=matrix_list[i];
+			subset[subset_count]=matrix_list[i];
+			subset_count++;
+			printf("%d %d\n",tmpsum,matrix_list[i]);
+		}
+	}
+	
+	int high=subset[0];
+	for (int i=1; i<subset_count; i++) {
+		matrix_mul(matrix_alloc(high, numbers), matrix_alloc(subset[i],numbers));
+		high=high+subset[i];
+	}
+	
+	printf("fibonacci number %d is %s\n",num,BN_bn2dec(numbers[num]));
+	
     return 0;
 }
 
