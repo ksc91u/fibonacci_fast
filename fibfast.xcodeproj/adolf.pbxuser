@@ -94,10 +94,13 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 278499010;
-			PBXWorkspaceStateSaveDate = 278499010;
+			PBXPerProjectTemplateStateSaveDate = 278512604;
+			PBXWorkspaceStateSaveDate = 278512604;
 		};
 		perUserProjectItems = {
+			8DCDFF3A1099C3E0004530F3 /* PBXTextBookmark */ = 8DCDFF3A1099C3E0004530F3 /* PBXTextBookmark */;
+			8DCDFF491099C444004530F3 /* PBXTextBookmark */ = 8DCDFF491099C444004530F3 /* PBXTextBookmark */;
+			8DCDFF4A1099C457004530F3 /* PBXTextBookmark */ = 8DCDFF4A1099C457004530F3 /* PBXTextBookmark */;
 			8DF36D56109981500090B03E = 8DF36D56109981500090B03E /* PBXTextBookmark */;
 			8DF36D57109981500090B03E = 8DF36D57109981500090B03E /* PBXTextBookmark */;
 			8DF36D63109984740090B03E = 8DF36D63109984740090B03E /* PBXTextBookmark */;
@@ -108,9 +111,9 @@
 	};
 	08FB7796FE84155DC02AAC07 /* main.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1011, 3341}}";
-			sepNavSelRange = "{2462, 0}";
-			sepNavVisRange = "{2270, 1208}";
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 3367}}";
+			sepNavSelRange = "{4123, 0}";
+			sepNavVisRange = "{246, 831}";
 			sepNavWindowFrame = "{{15, 218}, {999, 555}}";
 		};
 	};
@@ -160,6 +163,36 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
+	8DCDFF3A1099C3E0004530F3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
+		name = "main.c: 98";
+		rLen = 0;
+		rLoc = 2547;
+		rType = 0;
+		vrLen = 1167;
+		vrLoc = 2264;
+	};
+	8DCDFF491099C444004530F3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
+		name = "main.c: 164";
+		rLen = 0;
+		rLoc = 4123;
+		rType = 0;
+		vrLen = 1001;
+		vrLoc = 3286;
+	};
+	8DCDFF4A1099C457004530F3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
+		name = "main.c: 164";
+		rLen = 0;
+		rLoc = 4123;
+		rType = 0;
+		vrLen = 831;
+		vrLoc = 246;
+	};
 	8DD76FA90486AB0100D96B5E /* fibfast */ = {
 		activeExec = 0;
 		executables = (
@@ -191,7 +224,7 @@
 		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
 		name = "main.c: 100";
 		rLen = 0;
-		rLoc = 2462;
+		rLoc = 2547;
 		rType = 0;
 		vrLen = 1208;
 		vrLoc = 2270;

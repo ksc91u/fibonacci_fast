@@ -90,6 +90,12 @@ void matrix_mul(matrix * m,matrix * n){
 		BN_sub(m->fextern[m->level+n->level],m->fextern[m->level+n->level+1] ,m->fextern[m->level+n->level-1] );
 		//printf("set number %d with %s\n",m->level+n->level,BN_bn2dec(m->fextern[m->level+n->level]));
 	}
+	
+	BN_free(m0n0);
+	BN_free(m1n1);
+	BN_free(m2n1);
+	BN_free(m3n3);
+	BN_CTX_free(ctx);
 }
 
 void print_matrix(matrix * m){
@@ -155,6 +161,7 @@ void * runner(void *arg){
 	}
 	
 	printf("thread %d end with level %d\n",m->id,m->level);
+	BN_CTX_free(ctx);
 	//print_matrix(m);
 	return NULL;
 }
