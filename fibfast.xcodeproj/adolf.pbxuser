@@ -94,15 +94,12 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 278512604;
-			PBXWorkspaceStateSaveDate = 278512604;
+			PBXPerProjectTemplateStateSaveDate = 278517901;
+			PBXWorkspaceStateSaveDate = 278517901;
 		};
 		perUserProjectItems = {
-			8DCDFF3A1099C3E0004530F3 /* PBXTextBookmark */ = 8DCDFF3A1099C3E0004530F3 /* PBXTextBookmark */;
-			8DCDFF491099C444004530F3 /* PBXTextBookmark */ = 8DCDFF491099C444004530F3 /* PBXTextBookmark */;
-			8DCDFF4A1099C457004530F3 /* PBXTextBookmark */ = 8DCDFF4A1099C457004530F3 /* PBXTextBookmark */;
+			8DCDFF4B1099C47D004530F3 = 8DCDFF4B1099C47D004530F3 /* PBXTextBookmark */;
 			8DF36D56109981500090B03E = 8DF36D56109981500090B03E /* PBXTextBookmark */;
-			8DF36D57109981500090B03E = 8DF36D57109981500090B03E /* PBXTextBookmark */;
 			8DF36D63109984740090B03E = 8DF36D63109984740090B03E /* PBXTextBookmark */;
 		};
 		sourceControlManager = 8D1E0D541098CE6100975EB3 /* Source Control */;
@@ -163,27 +160,7 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
-	8DCDFF3A1099C3E0004530F3 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
-		name = "main.c: 98";
-		rLen = 0;
-		rLoc = 2547;
-		rType = 0;
-		vrLen = 1167;
-		vrLoc = 2264;
-	};
-	8DCDFF491099C444004530F3 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
-		name = "main.c: 164";
-		rLen = 0;
-		rLoc = 4123;
-		rType = 0;
-		vrLen = 1001;
-		vrLoc = 3286;
-	};
-	8DCDFF4A1099C457004530F3 /* PBXTextBookmark */ = {
+	8DCDFF4B1099C47D004530F3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
 		name = "main.c: 164";
@@ -208,16 +185,6 @@
 		rType = 0;
 		vrLen = 140;
 		vrLoc = 0;
-	};
-	8DF36D57109981500090B03E /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 08FB7796FE84155DC02AAC07 /* main.c */;
-		name = "main.c: 82";
-		rLen = 0;
-		rLoc = 1880;
-		rType = 0;
-		vrLen = 992;
-		vrLoc = 1330;
 	};
 	8DF36D63109984740090B03E /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;

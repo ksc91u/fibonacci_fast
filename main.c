@@ -174,6 +174,7 @@ int main (int argc, const char * argv[]) {
 		return -1;
 	}
 	int num=atoi(argv[1]);
+	int i=0;
 	printf("generate %dth fib number\n",num);
 	
 	BIGNUM ** numbers=malloc(sizeof(BIGNUM *)*num*2);
@@ -215,7 +216,7 @@ int main (int argc, const char * argv[]) {
 	print_matrix(m5);
 	
 	printf("dumping list of generated numbers\n");
-	for (int i=0; i<num*2; i++) {
+	for (i=0; i<num*2; i++) {
 		if (numbers[i]) {
 			printf("%d %s\n",i,BN_bn2dec(numbers[i]));
 			if(i>1 && numbers[i-1] && numbers[i+1]){
@@ -228,7 +229,7 @@ int main (int argc, const char * argv[]) {
 
 	}
 	printf("we have %d matrix\n",matrix_count);
-	for (int i=0; i<matrix_count; i++) {
+	for (i=0; i<matrix_count; i++) {
 		printf("matrix %d\n",matrix_list[i]);
 	}
 	
@@ -236,7 +237,7 @@ int main (int argc, const char * argv[]) {
 	int * subset=malloc(sizeof(int)*10);
 	int subset_count=0;
 	int tmpsum=num;
-	for (int i=matrix_count-1; i>=0 && tmpsum>0; i--) {
+	for (i=matrix_count-1; i>=0 && tmpsum>0; i--) {
 		if (matrix_list[i]<=tmpsum) {
 			tmpsum-=matrix_list[i];
 			subset[subset_count]=matrix_list[i];
@@ -246,7 +247,7 @@ int main (int argc, const char * argv[]) {
 	}
 	
 	int high=subset[0];
-	for (int i=1; i<subset_count; i++) {
+	for (i=1; i<subset_count; i++) {
 		matrix_mul(matrix_alloc(high, numbers), matrix_alloc(subset[i],numbers));
 		high=high+subset[i];
 	}
